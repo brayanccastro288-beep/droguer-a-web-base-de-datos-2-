@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+body { font-family: Segoe UI, Arial, sans-serif; margin: 0; background: #f0f7f4; color: #222; }
+nav { background: #0f766e; color: white; display: flex; align-items: center; gap: 18px; padding: 14px 28px; }
+nav a { color: white; text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+.logo { font-weight: bold; font-size: 18px; }
+.espacio { flex: 1; }
+main { max-width: 1100px; margin: 28px auto; padding: 0 20px; }
+h2 { color: #0f766e; }
+table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+th { background: #14b8a6; color: white; text-align: left; }
+th, td { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; }
+tr:hover td { background: #f0fdfa; }
+input, select { padding: 9px; border: 1px solid #ccc; border-radius: 6px; }
+button, .btn { background: #0f766e; color: white; border: none; padding: 9px 16px; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px; }
+button:hover, .btn:hover { opacity: .85; }
+.verde { background: #16a34a; }
+.rojo { background: #dc2626; }
+.buscador { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+.formulario { background: white; padding: 24px; border-radius: 8px; max-width: 420px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.login { background: white; max-width: 360px; margin: 80px auto; padding: 32px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.12); text-align: center; }
+.login form { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-top: 20px; }
+.alerta { background: #fee2e2; color: #991b1b; padding: 10px 14px; border-radius: 6px; margin-bottom: 14px; }
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.tarjeta { background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.tarjeta h3 { margin-top: 0; font-size: 16px; }

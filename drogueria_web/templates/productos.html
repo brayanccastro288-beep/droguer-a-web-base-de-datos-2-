@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>Productos</h2>
+
+<form method="GET" class="buscador">
+  <input type="text" name="texto" placeholder="Nombre o código" value="{{ request.args.get('texto','') }}">
+  <input type="text" name="categoria" placeholder="Categoría" value="{{ request.args.get('categoria','') }}">
+  <input type="text" name="proveedor" placeholder="Proveedor" value="{{ request.args.get('proveedor','') }}">
+  <button type="submit">Buscar</button>
+  {% if session.rol|lower == 'administrador' %}
+    <a class="btn verde" href="{{ url_for('nuevo') }}">+ Nuevo producto</a>
+  {% endif %}
+</form>
+
+<table>
+  <tr>
+    <th>Código</th><th>Nombre</th><th>P. compra</th><th>P. venta</th><th>Stock</th>
+    <th>Vence</th><th>Categoría</th><th>Proveedor</th>
+    {% if session.rol|lower == 'administrador' %}<th>Acciones</th>{% endif %}
+  </tr>
+  {% for p in productos %}
+  <tr>
+    <td>{{ p.codigo }}</td>
+    <td>{{ p.nombre }}</td>
+    <td>${{ p.precio_compra }}</td>
+    <td>${{ p.precio_venta }}</td>
+    <td>{{ p.stock }}{% if p.stock <= p.stock_minimo %} ⚠️{% endif %}</td>
+    <td>{{ p.fecha_vencimiento or '-' }}</td>
+    <td>{{ p.nombre_categoria }}</td>
+    <td>{{ p.razon_social }}</td>
+    {% if session.rol|lower == 'administrador' %}
+    <td>
+      <a class="btn" href="{{ url_for('editar', id=p.id_producto) }}">Editar</a>
+      <a class="btn rojo" href="{{ url_for('eliminar', id=p.id_producto) }}"
+         onclick="return confirm('¿Eliminar este producto?')">Eliminar</a>
+    </td>
+    {% endif %}
+  </tr>
+  {% else %}
+  <tr><td colspan="9">No se encontraron productos</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

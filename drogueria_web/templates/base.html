@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Droguería Salud y Vida</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+  {% if session.usuario %}
+  <nav>
+    <span class="logo">💊 Droguería Salud y Vida</span>
+    <a href="{{ url_for('productos') }}">Productos</a>
+    <a href="{{ url_for('reportes') }}">Reportes</a>
+    <span class="espacio"></span>
+    <span>{{ session.usuario }} ({{ session.rol }})</span>
+    <a href="{{ url_for('logout') }}">Salir</a>
+  </nav>
+  {% endif %}
+  <main>
+    {% with mensajes = get_flashed_messages() %}
+      {% for m in mensajes %}<div class="alerta">{{ m }}</div>{% endfor %}
+    {% endwith %}
+    {% block contenido %}{% endblock %}
+  </main>
+</body>
+</html>

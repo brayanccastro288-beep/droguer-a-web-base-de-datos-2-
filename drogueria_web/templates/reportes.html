@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>Reportes y análisis</h2>
+<div class="tarjetas">
+  <div class="tarjeta">
+    <h3>Top 5 productos más vendidos</h3>
+    <table><tr><th>Producto</th><th>Unidades</th></tr>
+    {% for r in mas_vendidos %}<tr><td>{{ r.nombre }}</td><td>{{ r.total_vendido }}</td></tr>{% endfor %}
+    </table>
+  </div>
+  <div class="tarjeta">
+    <h3>Stock bajo (≤ stock mínimo)</h3>
+    <table><tr><th>Producto</th><th>Stock</th><th>Mínimo</th></tr>
+    {% for r in stock_bajo %}<tr><td>{{ r.nombre }}</td><td>{{ r.stock }}</td><td>{{ r.stock_minimo }}</td></tr>{% endfor %}
+    </table>
+  </div>
+  <div class="tarjeta">
+    <h3>Por vencer (próximos 90 días)</h3>
+    <table><tr><th>Producto</th><th>Vence</th></tr>
+    {% for r in por_vencer %}<tr><td>{{ r.nombre }}</td><td>{{ r.fecha_vencimiento }}</td></tr>{% endfor %}
+    </table>
+  </div>
+  <div class="tarjeta">
+    <h3>Productos por categoría</h3>
+    <table><tr><th>Categoría</th><th>Cantidad</th></tr>
+    {% for r in por_categoria %}<tr><td>{{ r.nombre_categoria }}</td><td>{{ r.cantidad_productos }}</td></tr>{% endfor %}
+    </table>
+  </div>
+  <div class="tarjeta">
+    <h3>Ventas por mes</h3>
+    <table><tr><th>Mes</th><th>Total</th></tr>
+    {% for r in ventas_mes %}<tr><td>{{ r.mes }}</td><td>${{ r.total_vendido }}</td></tr>{% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock %}
